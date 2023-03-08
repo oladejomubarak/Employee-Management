@@ -8,4 +8,5 @@ public interface EmployeeServices {
     List<Employee> getAllEmployee();
     Employee createEmployee(Employee employee);
     Employee getEmployee(Long id);
+    String updateEmployee(Long id, Employee employee);
 }
