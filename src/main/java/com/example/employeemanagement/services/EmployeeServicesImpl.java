@@ -32,15 +32,15 @@ public class EmployeeServicesImpl implements EmployeeServices{
     }
 
     @Override
-    public String updateEmployee(Long id, Employee employee) {
+    public String updateEmployee(Long id, Employee employeeDetails) {
         Employee foundEmployee = employeeRepository.findById(id).orElseThrow(()->new EmployeeNotFoundException
-                ("employee with the id "+ id +"does not exist"));
-        foundEmployee.setFirstName(employee.getFirstName() != null && !employee.getFirstName().equals("") ?
-                employee.getFirstName() : foundEmployee.getFirstName());
-        foundEmployee.setLastName(employee.getLastName() != null && !employee.getLastName().equals("") ?
-                employee.getLastName() : foundEmployee.getLastName());
-        foundEmployee.setEmail(employee.getEmail() != null && !employee.getEmail().equals("") ?
-                employee.getEmail() : foundEmployee.getEmail());
+                ("employeeDetails with the id "+ id +"does not exist"));
+        foundEmployee.setFirstName(employeeDetails.getFirstName() != null && !employeeDetails.getFirstName().equals("") ?
+                employeeDetails.getFirstName() : foundEmployee.getFirstName());
+        foundEmployee.setLastName(employeeDetails.getLastName() != null && !employeeDetails.getLastName().equals("") ?
+                employeeDetails.getLastName() : foundEmployee.getLastName());
+        foundEmployee.setEmail(employeeDetails.getEmail() != null && !employeeDetails.getEmail().equals("") ?
+                employeeDetails.getEmail() : foundEmployee.getEmail());
         employeeRepository.save(foundEmployee);
         return "Employee with the id "+id+" updated successfully";
     }

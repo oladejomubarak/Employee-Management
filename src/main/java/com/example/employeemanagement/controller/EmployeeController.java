@@ -27,9 +27,11 @@ public class EmployeeController {
     public Employee createEmployee(@RequestBody Employee employee ){
         return employeeServices.createEmployee(employee);
     }
-    @GetMapping("/employess/{id}")
+    @GetMapping("/employees/{id}")
     public ResponseEntity<Employee> getEmployee(@PathVariable Long id){
        Employee foundEmployee = employeeServices.getEmployee(id);
         return ResponseEntity.ok(foundEmployee);
     }
+    @PutMapping("/employees/{id}")
+    public ResponseEntity<?> updateEmployee(@PathVariable Long id, @RequestBody Employee employeeDetails)
 }
