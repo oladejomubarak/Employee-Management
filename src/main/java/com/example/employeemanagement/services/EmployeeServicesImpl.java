@@ -20,7 +20,6 @@ public class EmployeeServicesImpl implements EmployeeServices{
 
         return employeeRepository.findAll();
     }
-
     @Override
     public Employee createEmployee(Employee employee) {
         return employeeRepository.save(employee);
@@ -32,7 +31,6 @@ public class EmployeeServicesImpl implements EmployeeServices{
                 .orElseThrow(()->new EmployeeNotFoundException
                         ("employee with the id "+ id +"does not exist"));
     }
-
     @Override
     public String updateEmployee(Long id, Employee employeeDetails) {
         Employee foundEmployee = employeeRepository.findById(id).orElseThrow(()->new EmployeeNotFoundException
@@ -46,7 +44,6 @@ public class EmployeeServicesImpl implements EmployeeServices{
         employeeRepository.save(foundEmployee);
         return "Employee with the id "+id+" updated successfully";
     }
-
     @Override
     public Map<String, Boolean> deleteEmployee(Long id) {
         Employee foundEmployee = employeeRepository.findById(id).orElseThrow(()->new EmployeeNotFoundException
