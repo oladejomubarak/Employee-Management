@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class EmployeeServicesImpl implements EmployeeServices{
@@ -43,5 +44,10 @@ public class EmployeeServicesImpl implements EmployeeServices{
                 employeeDetails.getEmail() : foundEmployee.getEmail());
         employeeRepository.save(foundEmployee);
         return "Employee with the id "+id+" updated successfully";
+    }
+
+    @Override
+    public Map<String, Boolean> deleteEmployee(Long id) {
+        return null;
     }
 }
