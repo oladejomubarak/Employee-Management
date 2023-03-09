@@ -6,6 +6,7 @@ import com.example.employeemanagement.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -48,6 +49,11 @@ public class EmployeeServicesImpl implements EmployeeServices{
 
     @Override
     public Map<String, Boolean> deleteEmployee(Long id) {
-        return null;
+        Employee foundEmployee = employeeRepository.findById(id).orElseThrow(()->new EmployeeNotFoundException
+                ("employeeDetails with the id "+ id +"does not exist"));
+        employeeRepository.delete(foundEmployee);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("employee with the id "+id+" has been deleted successfully", Boolean.TRUE);
+        return response;
     }
 }
